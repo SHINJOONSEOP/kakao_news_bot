@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>최근 뉴스</h2>
+  <ul class="list-group mb-4">
+    {% for n in news %}
+      <li class="list-group-item">
+        <b>{{ n[1] }}</b><br>
+        <a href="{{ n[2] }}" target="_blank">{{ n[2] }}</a>
+      </li>
+    {% else %}
+      <li class="list-group-item">저장된 뉴스 없음</li>
+    {% endfor %}
+  </ul>
+
+  <h2>실행 로그</h2>
+  <pre style="background:#f8f9fa; padding:10px; border-radius:5px;">
+{% for log in logs %}
+{{ log }}
+{% endfor %}
+  </pre>
+
+  <a href="{{ url_for('run_now') }}" class="btn btn-primary">지금 실행하기</a>
+{% endblock %}
